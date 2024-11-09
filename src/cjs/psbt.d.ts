@@ -106,6 +106,18 @@ export declare class Psbt {
     signInput(inputIndex: number, keyPair: Signer, sighashTypes?: number[]): this;
     signTaprootInput(inputIndex: number, keyPair: Signer, tapLeafHashToSign?: Uint8Array, sighashTypes?: number[]): this;
     private _signInput;
+    /**
+     * Get the hash that needs to be signed for a specific input and public key
+     * The returned hash will be used for signing the input, using the external custodian such as Fireblocks or AWS KMS
+     * @param inputIndex - The index of the input to sign
+     * @param pubkey - The public key to sign with (33 or 65 bytes)
+     * @param sighashTypes - Allowed sighash types (defaults to [SIGHASH_ALL])
+     * @returns Object containing the hash to sign and the sighash type used
+     */
+    getHashForSigning(inputIndex: number, pubkey: Uint8Array, sighashTypes?: number[]): {
+        hash: Uint8Array;
+        sighashType: number;
+    };
     private _signTaprootInput;
     signInputAsync(inputIndex: number, keyPair: Signer | SignerAsync, sighashTypes?: number[]): Promise<void>;
     signTaprootInputAsync(inputIndex: number, keyPair: Signer | SignerAsync, tapLeafHash?: Uint8Array, sighashTypes?: number[]): Promise<void>;
