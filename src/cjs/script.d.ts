@@ -39,3 +39,21 @@ export declare function isDefinedHashType(hashType: number): boolean;
 export declare function isCanonicalScriptSignature(buffer: Uint8Array): boolean;
 export declare const number: typeof scriptNumber;
 export declare const signature: typeof scriptSignature;
+declare const _default: {
+    compile: typeof compile;
+    decompile: typeof decompile;
+    toASM: typeof toASM;
+    fromASM: typeof fromASM;
+    toStack: typeof toStack;
+    isCanonicalPubKey: typeof isCanonicalPubKey;
+    isCanonicalScriptSignature: typeof isCanonicalScriptSignature;
+    isPushOnly: typeof isPushOnly;
+    countNonPushOnlyOPs: typeof countNonPushOnlyOPs;
+    isDefinedHashType: typeof isDefinedHashType;
+    OPS: {
+        [key: string]: number;
+    };
+    number: typeof scriptNumber;
+    signature: typeof scriptSignature;
+};
+export default _default;

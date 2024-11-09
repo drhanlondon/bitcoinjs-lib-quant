@@ -259,3 +259,18 @@ function isCanonicalScriptSignature(buffer) {
 }
 exports.number = scriptNumber;
 exports.signature = scriptSignature;
+exports.default = {
+  compile,
+  decompile,
+  toASM,
+  fromASM,
+  toStack,
+  isCanonicalPubKey,
+  isCanonicalScriptSignature,
+  isPushOnly,
+  countNonPushOnlyOPs,
+  isDefinedHashType,
+  OPS: ops_js_1.OPS,
+  number: exports.number,
+  signature: exports.signature,
+};
