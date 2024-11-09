@@ -866,6 +866,31 @@ export class Psbt {
     return this;
   }
 
+  /**
+   * Get the hash that needs to be signed for a specific input and public key
+   * The returned hash will be used for signing the input, using the external custodian such as Fireblocks or AWS KMS
+   * @param inputIndex - The index of the input to sign
+   * @param pubkey - The public key to sign with (33 or 65 bytes)
+   * @param sighashTypes - Allowed sighash types (defaults to [SIGHASH_ALL])
+   * @returns Object containing the hash to sign and the sighash type used
+   */
+  getHashForSigning(
+    inputIndex: number, 
+    pubkey: Uint8Array,
+    sighashTypes: number[] = [Transaction.SIGHASH_ALL]
+  ): {
+    hash: Uint8Array;
+    sighashType: number;
+  } {
+    return getHashAndSighashType(
+      this.data.inputs,
+      inputIndex,
+      pubkey, 
+      this.__CACHE,
+      sighashTypes
+    );
+  }
+
   private _signTaprootInput(
     inputIndex: number,
     input: PsbtInput,
