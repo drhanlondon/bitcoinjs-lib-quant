@@ -252,18 +252,3 @@ export function isCanonicalScriptSignature(buffer: Uint8Array): boolean {
 export const number = scriptNumber;
 export const signature = scriptSignature;
 
-export default {
-  compile,
-  decompile,
-  toASM,
-  fromASM,
-  toStack,
-  isCanonicalPubKey,
-  isCanonicalScriptSignature,
-  isPushOnly,
-  countNonPushOnlyOPs,
-  isDefinedHashType,
-  OPS,
-  number,
-  signature,
-};
